@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/Sathvik-Malgikar/Jaagratha/issues"
   },
-  "homepage": "https://github.com/Sathvik-Malgikar/Jaagratha#readme"
+  "homepage": "https://github.com/Sathvik-Malgikar/Jaagratha#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
 }
