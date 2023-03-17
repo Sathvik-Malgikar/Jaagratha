@@ -1,0 +1,29 @@
+{
+  "name": "jaagratha",
+  "version": "1.0.0",
+  "description": "Automatic crime detection using realtime CCTV",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sathvik-Malgikar/Jaagratha.git"
+  },
+  "keywords": [
+    "CCTV",
+    "Realtime",
+    "ML",
+    "deep",
+    "learning",
+    "OpenCV",
+    "image",
+    "processing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sathvik-Malgikar/Jaagratha/issues"
+  },
+  "homepage": "https://github.com/Sathvik-Malgikar/Jaagratha#readme"
+}
