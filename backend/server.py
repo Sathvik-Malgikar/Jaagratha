@@ -106,7 +106,7 @@ def genVidFeed(vid):
                         timer=timer+50
                         print("grand called in face detection",timer)
                         cv2.imwrite("suspect.png",frame)
-                        result = idk("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7483064938","7019486115","9380900636 "],["hemabhushanr3@gmail.com","sathvik.malgikar@gmail.com","rashmipr9496@gmail.com"])
+                        task = asyncio.create_task(idk("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7483064938","7019486115","9380900636 "],["hemabhushanr3@gmail.com","sathvik.malgikar@gmail.com","rashmipr9496@gmail.com"])) 
                         
                 idTemp = []
                 for (x, y, w, h) in faces:
