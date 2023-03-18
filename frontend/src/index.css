@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +15,16 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.Button{
+  @apply p-4 m-10 rounded bg-red-500 text-center text-white;
+}
+
+.Input{
+  @apply p-4 m-10 rounded text-center text-black;
+}
+
+.Title{
+  @apply p-4 m-10 text-center text-4xl text-white;
 }
