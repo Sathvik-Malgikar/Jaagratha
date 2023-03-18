@@ -4,16 +4,22 @@ import cv2
 from time import sleep
 import json
 import pymongo
+from tensorflow import keras
+import tensorflow as tf
 
 app = Flask(__name__)
 CORS(app)
 
 vid1 = cv2.VideoCapture("http://192.168.137.128:4747/video?640x480")
-vid2 = cv2.VideoCapture("http://192.168.137.228:4747/video?640x480")
-vid3 = cv2.VideoCapture("http://192.168.137.84:4747/video?640x480")
+# vid2 = cv2.VideoCapture("http://192.168.137.228:4747/video?640x480")
+# vid3 = cv2.VideoCapture("http://192.168.137.84:4747/video?640x480")
 
-vidStreams = [vid1, vid2]
+vidStreams = [vid1]
 vidFeeds = []
+
+crimeDetector = keras.models.load_model("crime_detect_modelH5.h5")
+
+
 
 ## face recogniser specific stuff
 recognizer = cv2.face.LBPHFaceRecognizer_create()
@@ -30,9 +36,29 @@ minH = 0.1*vid1.get(4)
 
 
 def genVidFeed(vid):
+    count = 1
+    prob = 0
     def gen_frames():
+        nonlocal count, prob
         while True:
+            count += 1
             success, frame = vid.read()  # read the camera frame
+            
+            if (count%10 == 0 and prob != 1):
+                frame2 = cv2.resize(frame, (64,64))
+                frame2 = tf.expand_dims(frame2, axis=0)
+                pred_val = crimeDetector(frame2)
+                pred_val = tf.get_static_value(pred_val)[0]
+
+                maxval = max(pred_val)
+                #flipped for testing
+                if maxval == pred_val[7]:
+                    prob = 0
+                else:
+                    prob = 1
+            
+            # frame = cv2.resize(frame, (64, 64))
+            
             if not success:
                 break
             else:
@@ -81,6 +107,9 @@ def genVidFeed(vid):
                         1
                     )
                 #face recog start
+
+                if prob:
+                    cv2.putText(frame, "Crime Detected", (200, 40), font, 1, (0, 0, 255), 1)
 
                 ret, buffer = cv2.imencode('.jpg', frame)
                 frame = buffer.tobytes()
