@@ -55,8 +55,8 @@ predicted_class = np.argmax(crimeDetector.predict(final_gen2), axis=-1)
 # print()
 probabilities = predicted_class.tolist()
 actual_probabilities = [np.max(vector) for vector in pred_val]
-print(pred_val)
-
+classes_for_img = [classes[list(vector).index(np.max(vector))] for vector in pred_val]
+print(classes_for_img)
 # cv2.imshow("test", img1)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
