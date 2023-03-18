@@ -11,10 +11,9 @@ function App() {
     <div className="App">
       <header className="App-header">
     
-    <h1> Jaagratha Automatic Crime detection. </h1>
+    <h1 className='Title'> Jaagratha Automatic Crime detection. </h1>
 
-     Authorised? <Login></Login> :
-    <CCTVGrid></CCTVGrid>
+    { Authorised?   <CCTVGrid></CCTVGrid> : <Login cb={setAuthorised} ></Login>}
 
       </header>
     </div>
