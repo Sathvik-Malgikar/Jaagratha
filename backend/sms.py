@@ -1,17 +1,18 @@
-import http.client
+# Download the helper library from https://www.twilio.com/docs/python/install
 
-conn = http.client.HTTPSConnection("connect.routee.net")
+from twilio.rest import Client
+import keys
 
-payload = "{ \"body\": \"A new game has been posted to the MindPuzzle. Check it out\",\"to\" : \"+917019486115\",\"from\": \"amdTelecom\"}"
+# Find your Account SID and Auth Token at twilio.com/console
+# and set the environment variables. See http://twil.io/secure
 
-headers = {
-    'authorization': "Bearer 12dc9fe4-7df4-4786-8d7a-a46d307687f4",
-    'content-type': "application/json"
-    }
+client = Client(keys.account_sid, keys.auth_token)
 
-conn.request("POST", "/sms", payload, headers)
 
-res = conn.getresponse()
-data = res.read()
-
-print(data.decode("utf-8"))
+def smsfoo(msg,num):
+    message = client.messages.create(
+                                from_=keys.twilio_num,
+                                body=msg,
+                                to="+91"+num
+                            )
+    print(message.sid)  
