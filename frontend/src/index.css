@@ -28,3 +28,19 @@ code {
 .Title{
   @apply p-4 m-10 text-center text-4xl text-white;
 }
+
+.stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: overlap;
+  
+}
+
+.stackele {
+
+  grid-template-areas: overlap;
+  align-self: center;
+  justify-self: center;
+
+}

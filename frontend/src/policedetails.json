@@ -1,0 +1,32 @@
+ [
+    {
+        "name" : "Ramkumar",
+        "location" : "Banashakari 3rd stage",
+        "phonenum" : "7019486115",
+        "email" : "Sathvik.malgikar@gmail.com"
+    },
+    {
+        "name" : "Jairam",
+        "location" : "Bannerghatta",
+        "phonenum" : "9380900636",
+        "email" : "rashmipr9496@gmail.com"
+    },
+    {
+        "name" : "Ramesh",
+        "location" : "majestic",
+        "phonenum" : "6360709909",
+        "email" : "pranav@gmail.com"
+    },
+    {
+        "name" : "Suresh",
+        "location" : "Jalahalli",
+        "phonenum" : "7483064938",
+        "email" : "hemabhushanr3@gmail.com"
+    },
+    {
+        "name" : "Mahesh",
+        "location" : "yashwanthpur",
+        "phonenum" : "8762671367",
+        "email" : "amrithagk12@gmail.com"
+    }
+]
