@@ -6,6 +6,8 @@ import json
 import pymongo
 from tensorflow import keras
 import tensorflow as tf
+import whole
+import time
 
 app = Flask(__name__)
 CORS(app)
@@ -40,6 +42,7 @@ def genVidFeed(vid):
     prob = 0
     def gen_frames():
         nonlocal count, prob
+        timer=time.time()
         while True:
             count += 1
             success, frame = vid.read()  # read the camera frame
@@ -107,11 +110,16 @@ def genVidFeed(vid):
                         1
                     )
                 #face recog start
-
+                
                 if prob:
                     cv2.putText(frame, "Crime Detected", (200, 40), font, 1, (0, 0, 255), 1)
+                    if(time.time()>=timer):
+                        cv2.imwrite("suspect.png",frame)
+                        whole.GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67","7483064938","hemabhushanr3@gmail.com")
+                        timer=timer+50
 
                 ret, buffer = cv2.imencode('.jpg', frame)
+                
                 frame = buffer.tobytes()
                 yield (b'--frame\r\n'
                     b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n') 
