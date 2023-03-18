@@ -1,13 +1,16 @@
 import cv2
 
-vid = cv2.VideoCapture(1)
+vid = cv2.VideoCapture(0)
+from time import sleep
 
 
 while(True):
     
     ret, frame = vid.read()
     
-    cv2.imshow("Watch-Yantra",frame)
+    sleep(1)
+    
+    cv2.imshow("Jaagratha.",frame)
     
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
