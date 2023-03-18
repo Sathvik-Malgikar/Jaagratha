@@ -8,16 +8,19 @@ from tensorflow import keras
 import tensorflow as tf
 import whole
 import time
+from keras_preprocessing.image import ImageDataGenerator
+import numpy as np
 import asyncio
+
 
 app = Flask(__name__)
 CORS(app)
 
 vid1 = cv2.VideoCapture("http://192.168.137.128:4747/video?640x480")
-vid2 = cv2.VideoCapture("http://192.168.137.242:4747/video?640x480")
+# vid2 = cv2.VideoCapture("http://192.168.137.242:4747/video?640x480")
 # vid3 = cv2.VideoCapture("http://192.168.137.84:4747/video?640x480")
 
-vidStreams = [vid1, vid2]
+vidStreams = [vid1]
 vidFeeds = []
 
 crimeDetector = keras.models.load_model("crime_detect_modelH5.h5")
@@ -35,9 +38,19 @@ names = ['None', 'Pranav', 'Hemabhushan', 'Ilza', 'Z', 'W']
 minW = 0.1*vid1.get(3)
 minH = 0.1*vid1.get(4)
 
+buffer_dir = r"C:\Users\prana\Desktop\Workspaces\Hack Attack\Jaagratha\backend\buffer\Explosion"
+crimeDetector = keras.models.load_model(r'C:\Users\prana\Desktop\Workspaces\Hack Attack\Jaagratha\backend\test\crime_detect_modelH5.h5')
+preprocess_fun = tf.keras.applications.densenet.preprocess_input
+final_gen = ImageDataGenerator(horizontal_flip=True,
+                                   width_shift_range=0.1,
+                                   height_shift_range=0.05,
+                                   rescale = 1./255,
+                                   preprocessing_function=preprocess_fun
+                                  )
 
 async def idk(a, b, c, d):
-    whole.GRAND(a, b, c, d)
+    print("figure out")
+    await whole.GRAND(a, b, c, d)
     return None
 
 def genVidFeed(vid):
@@ -49,8 +62,18 @@ def genVidFeed(vid):
         while True:
             count += 1
             success, frame = vid.read()  # read the camera frame
-            
-            if (0):
+            # cv2.imwrite("temp")
+            if (prob == 0):
+                final_gen2 = final_gen.flow_from_directory(directory = buffer_dir,
+                                                    target_size = (64, 64),
+                                                    batch_size = 1,
+                                                    shuffle  = True , 
+                                                    color_mode = "rgb",
+                                                    class_mode = "categorical",
+                                                    seed = 10,
+                                                    classes = ['Abuse','Arrest','Arson','Assault','Burglary','Explosion','Fighting',"Normal",'RoadAccidents','Robbery','Shooting','Shoplifting','Stealing','Vandalism']
+                                                   )
+
                 frame2 = cv2.resize(frame, (64,64))
                 frame2 = tf.expand_dims(frame2, axis=0)
                 pred_val = crimeDetector(frame2)
