@@ -8,15 +8,16 @@ from tensorflow import keras
 import tensorflow as tf
 import whole
 import time
+import asyncio
 
 app = Flask(__name__)
 CORS(app)
 
 vid1 = cv2.VideoCapture("http://192.168.137.128:4747/video?640x480")
-# vid2 = cv2.VideoCapture("http://192.168.137.228:4747/video?640x480")
+vid2 = cv2.VideoCapture("http://192.168.137.242:4747/video?640x480")
 # vid3 = cv2.VideoCapture("http://192.168.137.84:4747/video?640x480")
 
-vidStreams = [vid1]
+vidStreams = [vid1, vid2]
 vidFeeds = []
 
 crimeDetector = keras.models.load_model("crime_detect_modelH5.h5")
@@ -35,11 +36,13 @@ minW = 0.1*vid1.get(3)
 minH = 0.1*vid1.get(4)
 
 
-
+async def idk(a, b, c, d):
+    whole.GRAND(a, b, c, d)
+    return None
 
 def genVidFeed(vid):
+    prob = 1
     count = 1
-    prob = 0
     def gen_frames():
         nonlocal count, prob
         timer=time.time()
@@ -47,7 +50,7 @@ def genVidFeed(vid):
             count += 1
             success, frame = vid.read()  # read the camera frame
             
-            if (count%10 == 0 and prob != 1):
+            if (0):
                 frame2 = cv2.resize(frame, (64,64))
                 frame2 = tf.expand_dims(frame2, axis=0)
                 pred_val = crimeDetector(frame2)
@@ -74,6 +77,14 @@ def genVidFeed(vid):
                     minNeighbors=5,
                     minSize=(int(minW), int(minH)),
                 )
+                # my modifications
+                if faces != []:
+                    if(time.time()>=timer):
+                        timer=timer+50
+                        print("grand called in face detection",timer)
+                        cv2.imwrite("suspect.png",frame)
+                        result = idk("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7483064938","7019486115","9380900636 "],["hemabhushanr3@gmail.com","sathvik.malgikar@gmail.com","rashmipr9496@gmail.com"])
+                        
                 idTemp = []
                 for (x, y, w, h) in faces:
                     cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
@@ -109,16 +120,20 @@ def genVidFeed(vid):
                         (255, 255, 0),
                         1
                     )
-                #face recog start
+               
                 
-                if prob:
-                    cv2.putText(frame, "Crime Detected", (200, 40), font, 1, (0, 0, 255), 1)
-                    if(time.time()>=timer):
-                        cv2.imwrite("suspect.png",frame)
-                        whole.GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67","7483064938","hemabhushanr3@gmail.com")
-                        timer=timer+50
+                # if prob:
+                #     print("prob")
+                #     cv2.putText(frame, "Crime Detected", (200, 40), font, 1, (0, 0, 255), 1)
+                
+                # if(time.time()>=timer):
+                #     print("grand called")
+                #     cv2.imwrite("suspect.png",frame)
+                #     whole.GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7483064938","7019486115","9380900636 "],["hemabhushanr3@gmail.com","sathvik.malgikar@gmail.com","rashmipr9496@gmail.com"])
+                #     timer=timer+50
 
                 ret, buffer = cv2.imencode('.jpg', frame)
+                
                 
                 frame = buffer.tobytes()
                 yield (b'--frame\r\n'

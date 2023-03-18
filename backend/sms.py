@@ -9,10 +9,10 @@ import keys
 client = Client(keys.account_sid, keys.auth_token)
 
 
-def smsfoo(msg,num):
+def smsfoo(msg,num,loc):
     message = client.messages.create(
                                 from_=keys.twilio_num,
-                                body=msg,
+                                body=msg + f"Move to this location : {loc}",
                                 to="+91"+num
                             )
     print(message.sid)  
