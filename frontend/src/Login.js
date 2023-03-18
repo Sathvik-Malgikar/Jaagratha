@@ -6,8 +6,9 @@ function Login({cb}){
 
     var url = "";
 
-    function loginhandle(){
-        login()
+    function loginhandle(e){
+        
+        login(e.target.elements.username.value,e.target.elements.password.value)
             cb(true);
     }
 
