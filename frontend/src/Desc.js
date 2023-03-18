@@ -2,7 +2,7 @@
 import {useState} from "react";
 // import { socket } from './socket';
 
-function CCTVGrid(){
+function Desc(){
 
     var url = "172.16.128.215:5000";
 
@@ -19,9 +19,7 @@ function CCTVGrid(){
     function onWelcomeEvent(){
         console.log("welcome");
     }
-    function raisealert(){
-    
-    }
+
    
 
     const [feedArr, setfeedArr] = useState(["http://172.16.128.215:5000/feed","http://172.16.128.215:5000/feed","http://172.16.128.215:5000/feed","http://172.16.128.215:5000/feed"])
@@ -30,14 +28,10 @@ function CCTVGrid(){
     return<div className="grid grid-cols-2 gap-8">
     
     {feedArr.map((e,i) =>{
-return (<div className="border-red rounded-lg overflow-clip border-4 " key={i}>
+return (<div className="border-red rounded-lg overflow-clip border-4" key={i}>
     
-{/* <div className='Button z-
-10  ' onClick={raisealert}>Notify troops !</div> */}
-
 
        <img className='w-50' src={e}  ></img>
-
    
 
 </div>)
@@ -50,4 +44,4 @@ return (<div className="border-red rounded-lg overflow-clip border-4 " key={i}>
 
 }
 
-export default CCTVGrid;
+export default Desc;
