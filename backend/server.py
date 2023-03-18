@@ -1,5 +1,7 @@
 from flask import Flask, Response
 
+from flask_cors import CORS
+
 import cv2
 from time import sleep
 import socket
@@ -13,19 +15,19 @@ def gen_frames():
             break
         else:
             ret, buffer = cv2.imencode('.jpg', frame)
-            cv2.imshow("test", frame)
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n') 
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/auth')
 def home():
     return 'Hello, World!'
 
-@app.route('/feed')
+@app.route('/feed', methods=["POST", "GET"])
 def videofeed1():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
     
