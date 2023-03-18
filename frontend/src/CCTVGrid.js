@@ -24,7 +24,7 @@ function CCTVGrid(){
     }
    
 
-    const [feedArr, setfeedArr] = useState(["http://172.16.128.215:5000/feed","http://172.16.128.215:5000/feed","http://172.16.128.215:5000/feed","http://172.16.128.215:5000/feed"])
+    const [feedArr, setfeedArr] = useState(["http://172.16.128.215:5000/feed?id=0","http://172.16.128.215:5000/feed?id=1","http://172.16.128.215:5000/feed?id=2"])
     
 
     return<div className="grid grid-cols-2 gap-8">
