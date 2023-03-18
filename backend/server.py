@@ -115,7 +115,7 @@ def genVidFeed(vid):
                     cv2.putText(frame, "Crime Detected", (200, 40), font, 1, (0, 0, 255), 1)
                     if(time.time()>=timer):
                         cv2.imwrite("suspect.png",frame)
-                        whole.GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7483064938","7019486115","9380900636"],["hemabhushanr3@gmail.com","sathvik.malgikar@gmail.com","rashmipr9496@gmail.com"])
+                        whole.GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7483064938","7019486115","9380900636 "],["hemabhushanr3@gmail.com","sathvik.malgikar@gmail.com","rashmipr9496@gmail.com"])
                         timer=timer+50
 
                 ret, buffer = cv2.imencode('.jpg', frame)
