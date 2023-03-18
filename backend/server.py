@@ -50,8 +50,16 @@ final_gen = ImageDataGenerator(horizontal_flip=True,
 
 async def idk(a, b, c, d):
     print("figure out")
-    await whole.GRAND(a, b, c, d)
-    return None
+    loop = asyncio.get_running_loop()
+    def lamb():
+        return idk(a,b,c,d)
+    result = await loop.run_in_executor(None,lamb) 
+    
+    print("Result obtained!!! S U C C E S S")
+    print(result)
+    
+    # await whole.GRAND(a, b, c, d)
+    
 
 def genVidFeed(vid):
     prob = 1
