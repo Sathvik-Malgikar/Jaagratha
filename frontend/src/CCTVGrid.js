@@ -4,7 +4,7 @@ import {useState} from "react";
 
 function CCTVGrid(){
 
-    var url = "";
+    var url = "172.16.128.215:5000";
 
     // socket.on('connect', onConnect);
     // socket.on('disconnect', onDisconnect);
@@ -21,9 +21,7 @@ function CCTVGrid(){
     }
 
     return<>
-        <video controls autoPlay>
-            <source src={url+"\\data\\oneid"} ></source>
-        </video>
+       <img className='w-50' src={url +"/feed"}  ></img>
     </>
 
 
