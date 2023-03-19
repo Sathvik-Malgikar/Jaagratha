@@ -15,6 +15,7 @@ def GRAND(msg,location,num,email):
    
     
     say(f"{msg} ", primarynum)
+    time.sleep(2)
     for curnum,curmail in zip(num,email):
         print(f"now mailing {curmail}")
         mail(f"{msg} {location}",email=curmail)
@@ -22,7 +23,7 @@ def GRAND(msg,location,num,email):
         print("done")
         smsfoo(msg=msg,num=curnum,loc=location)
         print("done")
-        time.sleep(1)
+        time.sleep(2)
     
-# GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67","7483064938","hemabhushanr3@gmail.com")
+GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7019486115","8762671367"],["sathvik.malgikar@gmail.com","amrithagk12@gmail.com"])
     

@@ -60,15 +60,15 @@ from email.message import EmailMessage
 
 # server.starttls()
 
-Sender_Email = "autodetectcrimesjaagratha@gmail.com"
-newMessage = EmailMessage()                         
-newMessage['Subject'] = "Alert from HeadQuarters" 
-newMessage['From'] = Sender_Email                   
 # server.login(Sender_Email,'securityDetect')
 
 
 def mail(msgappend,email):
 
+    Sender_Email = "autodetectcrimesjaagratha@gmail.com"
+    newMessage = EmailMessage()                         
+    newMessage['Subject'] = "Alert from HeadQuarters" 
+    newMessage['From'] = Sender_Email                   
     # Reciever_Email = "codeitbro@gmail.com"
     Password = "yawyqwvxualxvnbe"
 
