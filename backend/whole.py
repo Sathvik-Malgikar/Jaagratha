@@ -25,5 +25,5 @@ def GRAND(msg,location,num,email):
         print("done")
         time.sleep(2)
     
-GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7019486115","8762671367"],["sathvik.malgikar@gmail.com","amrithagk12@gmail.com"])
+# GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7019486115","8762671367"],["sathvik.malgikar@gmail.com","amrithagk12@gmail.com"])
     

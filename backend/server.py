@@ -49,12 +49,12 @@ final_gen = ImageDataGenerator(horizontal_flip=True,
                                )
 
 
-async def idk(a, b, c, d):
+async def idk():
     print("figure out")
     loop = asyncio.get_running_loop()
 
     def lamb():
-        return idk(a, b, c, d)
+        return whole.GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7019486115","8762671367"],["sathvik.malgikar@gmail.com","amrithagk12@gmail.com"])
     result = await loop.run_in_executor(None, lamb)
 
     print("Result obtained!!! S U C C E S S")
@@ -115,12 +115,11 @@ def genVidFeed(vid):
                 )
                 # my modifications
                 if faces != []:
-                    if (time.time() >= timer):
-                        timer = timer+50
+                    if (time.time()-timer >= 10):
+                        timer = time.time()
                         print("grand called in face detection", timer)
                         cv2.imwrite("suspect.png", frame)
-                        task = asyncio.create_task(idk("Medium level security is raised in Dwarakanagar. Get Moving! ", "https://goo.gl/maps/ZcTaE9kFN5GL1CU67", [
-                                                   "7483064938", "7019486115", "9380900636 "], ["hemabhushanr3@gmail.com", "sathvik.malgikar@gmail.com", "rashmipr9496@gmail.com"]))
+                        task = asyncio.create_task(idk())
 
                 idTemp = []
                 for (x, y, w, h) in faces:
@@ -158,15 +157,15 @@ def genVidFeed(vid):
                         1
                     )
 
-                # if prob:
-                #     print("prob")
-                #     cv2.putText(frame, "Crime Detected", (200, 40), font, 1, (0, 0, 255), 1)
+                if prob:
+                    print("prob")
+                    cv2.putText(frame, "Crime Detected", (200, 40), font, 1, (0, 0, 255), 1)
 
-                # if(time.time()>=timer):
-                #     print("grand called")
-                #     cv2.imwrite("suspect.png",frame)
-                #     whole.GRAND("Medium level security is raised in Dwarakanagar. Get Moving! ","https://goo.gl/maps/ZcTaE9kFN5GL1CU67",["7483064938","7019486115","9380900636 "],["hemabhushanr3@gmail.com","sathvik.malgikar@gmail.com","rashmipr9496@gmail.com"])
-                #     timer=timer+50
+                    if (time.time()-timer >= 10):
+                        timer = time.time()
+                        print("grand called in crime detection", timer)
+                        cv2.imwrite("suspect.png", frame)
+                        task = asyncio.create_task(idk())
 
                 ret, buffer = cv2.imencode('.jpg', frame)
 
