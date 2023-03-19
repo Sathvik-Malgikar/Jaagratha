@@ -1,3 +1,4 @@
 *node_modules/*
 *backend/env/*
 *backend/facerecognition/dataset/*
+*backend/test/*
