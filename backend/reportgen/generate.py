@@ -8,7 +8,7 @@ def create_cert(name, crime):
     id = str(uuid.uuid1())[0:20]
 
     raw = Image.open("./template.png").convert("RGB")
-    im2=Image.open("../suspect.png")
+    im2=Image.open("../suspect.jpg")
     raw.paste(im2, (100, 400))
     # raw.save('data/dst/rocket_pillow_paste_pos.jpg', quality=95)
     # title_font =
@@ -26,5 +26,5 @@ def create_cert(name, crime):
     raw.save(f"./{id}.png")
 
 
-# create_cert("CCTV Dwarakanagar", "Arson")
-
+create_cert("CCTV Dwarakanagar", "Arson")
+# 

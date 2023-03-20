@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import CCTVGrid from './CCTVGrid';
 import Login from './Login';
+import Report from './Report';
 import { useState } from 'react';
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
     <h1 className='Title'> Jaagratha Automatic Crime detection. </h1> 
 
     { Authorised?   <CCTVGrid></CCTVGrid> : <Login cb={setAuthorised} ></Login>}
+    
 
       </header>
     </div>
